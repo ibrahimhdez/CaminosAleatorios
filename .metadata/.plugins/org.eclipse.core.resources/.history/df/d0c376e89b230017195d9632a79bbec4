@@ -1,0 +1,122 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Botones extends JPanel{
+	private JButton botonEmpezar;
+	private JButton botonTerminar;
+	private JButton botonParar;
+	private JButton botonElegirColor;
+	private JLabel etiquetaColorActual;
+	private JLabel etiquetaDensidad;
+	private JTextField densidadCuadricula;
+	private JButton botonDensidad;
+	private JLabel velocidad;
+	
+	public Botones(){
+		setLayout(new GridLayout(3, 5));
+		this.setBotonEmpezar(new JButton("Empezar"));
+		this.setBotonTerminar(new JButton("Terminar"));
+		this.setBotonParar(new JButton("Parar"));
+		this.setBotonElegirColor(new JButton("Elegir color"));
+		this.setEtiquetaColorActual(new JLabel("Color actual"));
+		this.setEtiquetaDensidad(new JLabel("Introduce la densidad de la cuadrícula: "));
+		this.setDensidadCuadricula(new JTextField(3));
+		this.setBotonDensidad(new JButton("Aceptar"));
+		velocidad = new JLabel("Velocidad");
+	}
+
+	public void iniciarComponentes(){
+		JPanel panelArriba = new JPanel();
+		JPanel panelCentro = new JPanel();
+		JPanel panelAbajo = new JPanel();
+		
+		panelArriba.add(this.getBotonEmpezar());
+		panelArriba.add(this.getBotonParar());
+		panelArriba.add(this.getBotonTerminar());
+		panelArriba.add(this.getBotonElegirColor());
+		panelArriba.add(this.getEtiquetaColorActual());
+		panelCentro.add(this.getEtiquetaDensidad());
+		panelCentro.add(this.getDensidadCuadricula());
+		panelCentro.add(this.getBotonDensidad());
+		panelAbajo.add(velocidad);
+		
+		add(panelArriba);
+		add(panelCentro);
+		add(panelAbajo);
+	}
+	
+	void actualizarColorActual(Color color){
+		this.getEtiquetaColorActual().setForeground(color);
+	}
+	
+	public JButton getBotonEmpezar(){
+		return botonEmpezar;
+	}
+	
+	public void setBotonEmpezar(JButton botonEmpezar){
+		this.botonEmpezar = botonEmpezar;
+	}
+	
+	public JButton getBotonTerminar() {
+		return botonTerminar;
+	}
+
+	public void setBotonTerminar(JButton botonTerminar) {
+		this.botonTerminar = botonTerminar;
+	}
+	
+	public JButton getBotonParar(){
+		return botonParar;
+	}
+	
+	public void setBotonParar(JButton botonParar){
+		this.botonParar = botonParar;
+	}
+	
+	public JButton getBotonElegirColor() {
+		return botonElegirColor;
+	}
+
+	public void setBotonElegirColor(JButton botonElegirColor) {
+		this.botonElegirColor = botonElegirColor;
+	}
+
+	public JLabel getEtiquetaColorActual() {
+		return etiquetaColorActual;
+	}
+
+	public void setEtiquetaColorActual(JLabel etiquetaColorActual) {
+		this.etiquetaColorActual = etiquetaColorActual;
+	}
+	
+	public JTextField getDensidadCuadricula() {
+		return densidadCuadricula;
+	}
+
+	public void setDensidadCuadricula(JTextField densidadCuadricula) {
+		this.densidadCuadricula = densidadCuadricula;
+	}
+	
+	public JLabel getEtiquetaDensidad() {
+		return etiquetaDensidad;
+	}
+
+	public void setEtiquetaDensidad(JLabel etiquetaDensidad) {
+		this.etiquetaDensidad = etiquetaDensidad;
+	}
+
+	public JButton getBotonDensidad() {
+		return botonDensidad;
+	}
+	
+	public void setBotonDensidad(JButton botonDensidad) {
+		this.botonDensidad = botonDensidad;
+	}
+}

@@ -1,0 +1,66 @@
+import javax.swing.JPanel;
+
+public class Cuadricula extends JPanel{
+	private int miRectSize;
+	private int miDensidadX;
+	private int miDensidadY;
+	private int sizeX;
+	private int sizeY;
+
+	public Cuadricula()
+	{}
+	
+	public Cuadricula(int rectSize, int densidadX, int densidadY){
+		this.setMiRectSize(rectSize);
+		this.setMiDensidadX(densidadX);
+		this.setMiDensidadY(densidadY);
+		this.setSizeX(this.getMiDensidadX() * this.getMiRectSize());
+		this.setSizeY(this.getMiDensidadY() * this.getMiRectSize());
+	}
+	
+	void actualizarSize(){
+		System.out.println(getX());
+	}
+	
+	public int getMiRectSize() {
+		return miRectSize;
+	}
+
+	public void setMiRectSize(int miRectSize) {
+		this.miRectSize = miRectSize;
+	}
+
+	public int getMiDensidadX() {
+		return miDensidadX;
+	}
+
+	public void setMiDensidadX(int miDensidadX) {
+		this.miDensidadX = miDensidadX;
+		this.setSizeX(miDensidadX * this.getMiRectSize());
+	}
+
+	public int getMiDensidadY() {
+		return miDensidadY;
+	}
+
+	public void setMiDensidadY(int miDensidadY) {
+		this.miDensidadY = miDensidadY;
+		this.setSizeY(miDensidadY * this.getMiRectSize());
+	}
+	
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	public void setSizeX(int sizeX) {
+		this.sizeX = sizeX;
+	}
+
+	public int getSizeY() {
+		return sizeY;
+	}
+
+	public void setSizeY(int sizeY) {
+		this.sizeY = sizeY;
+	}
+}

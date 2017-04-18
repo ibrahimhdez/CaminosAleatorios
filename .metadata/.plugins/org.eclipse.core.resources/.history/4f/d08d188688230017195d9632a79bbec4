@@ -1,0 +1,144 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
+import javax.swing.JColorChooser;
+
+public class Controlador{
+	private Vista miVista;
+	private Cuadricula miCuadricula;
+	private Botones misBotones;
+	private CaminosAleatorios misCaminos;
+	private int velocidad;
+	private int iteraciones;
+	private Timer timer;
+	
+	public Controlador(int rectSize, int densidadX, int densidadY){
+		this.setMiVista(new Vista());
+		this.setMiCuadricula(new Cuadricula(rectSize, densidadX, densidadY));	
+		this.setMisBotones(new Botones());
+		this.setMisCaminos(new CaminosAleatorios());
+		this.setVelocidad(500);
+		this.setIteraciones(0);
+		
+		this.getMisBotones().getBotonElegirColor().addActionListener(new Oyente());
+		this.getMisBotones().getBotonParar().addActionListener(new Oyente());
+		this.getMisBotones().getBotonEmpezar().addActionListener(new Oyente());
+		this.getMisBotones().getBotonTerminar().addActionListener(new Oyente());
+	}
+	
+	void iniciarComponentes(){
+		this.getMisCaminos().calcularCamino(this.getMiCuadricula());
+		this.getMiVista().setMiCuadricula(this.getMiCuadricula());
+		this.getMiVista().setArrayPuntos(this.getMisCaminos().getArrayPuntos());
+		this.getMisBotones().iniciarComponentes();
+		this.getMisBotones().actualizarColorActual(this.getMiVista().getMiColor());
+		this.getMisCaminos().iniciarComponentes(this.getMiCuadricula(), this.getMiVista(), this.getMisBotones());
+	}
+	
+	void iniciarCamino(){
+		this.setTimer( new Timer(this.getVelocidad(), new ActionListener(){
+	        public void actionPerformed(ActionEvent e){
+	            pintarCamino();
+	        }
+	}));
+	 
+	this.getTimer().start();
+	}
+	
+	void pintarCamino(){    
+		if(this.getIteraciones() < getMisCaminos().getArrayPuntos().size()){
+			getMiVista().repaint();
+	  		this.setIteraciones(this.getIteraciones() + 1);
+	    }    	
+		else
+			this.getTimer().stop();
+	}
+	
+	public Vista getMiVista() {
+		return miVista;
+	}
+
+	public void setMiVista(Vista miVista) {
+		this.miVista = miVista;
+	}
+
+	public Cuadricula getMiCuadricula() {
+		return miCuadricula;
+	}
+
+	public void setMiCuadricula(Cuadricula miCuadricula) {
+		this.miCuadricula = miCuadricula;
+	}
+		
+	public Botones getMisBotones() {
+		return misBotones;
+	}
+
+	public void setMisBotones(Botones misBotones) {
+		this.misBotones = misBotones;
+	}
+	
+	public CaminosAleatorios getMisCaminos() {
+		return misCaminos;
+	}
+
+	public void setMisCaminos(CaminosAleatorios misCaminos) {
+		this.misCaminos = misCaminos;
+	}
+	
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
+	}
+	
+	public int getIteraciones() {
+		return iteraciones;
+	}
+
+	public void setIteraciones(int iteraciones) {
+		this.iteraciones = iteraciones;
+	}
+	
+	class Oyente implements ActionListener{
+		int a = 0;
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() == getMisBotones().getBotonElegirColor()){
+				getMiVista().setMiColor(null);
+				getMisBotones().actualizarColorActual(getMiVista().getMiColor());
+			}
+				
+			else if(e.getSource() == getMisBotones().getBotonEmpezar())
+				iniciarCamino();
+			
+			else if(e.getSource() == getMisBotones().getBotonParar()){
+				if(a == 0)	{
+					getTimer().stop();
+					a++;
+				}
+				
+				else{
+					getTimer().restart();
+					a = 0;
+				}
+			}
+			
+			else if(e.getSource() == getMisBotones().getBotonTerminar()){
+				getTimer().stop();
+				getMiVista().setPosicion(getMiVista().getArrayPuntos().size());
+				getMiVista().repaint();
+			}
+		}
+	}
+}

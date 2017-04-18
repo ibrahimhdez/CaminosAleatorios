@@ -1,0 +1,88 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Botones extends JPanel{
+	private JButton botonEmpezar;
+	private JButton botonTerminar;
+	private JButton botonParar;
+	private JButton botonElegirColor;
+	private JLabel etiquetaColorActual;
+	private JTextField densidadCuadricula;
+	
+	public Botones(){
+		setLayout(new BorderLayout());
+		this.setBotonEmpezar(new JButton("Empezar"));
+		this.setBotonTerminar(new JButton("Terminar"));
+		this.setBotonParar(new JButton("Parar"));
+		this.setBotonElegirColor(new JButton("Elegir color"));
+		this.setEtiquetaColorActual(new JLabel("Color actual"));
+		this.setDensidadCuadricula(new JTextField(3));
+	}
+	
+	public void iniciarComponentes(){
+		add(this.getBotonEmpezar());
+		add(this.getBotonParar());
+		add(this.getBotonTerminar());
+		add(this.getBotonElegirColor());
+		add(this.getEtiquetaColorActual());
+		add(this.getDensidadCuadricula(), BorderLayout.SOUTH);
+	}
+	
+	void actualizarColorActual(Color color){
+		this.getEtiquetaColorActual().setForeground(color);
+	}
+	
+	public JButton getBotonEmpezar(){
+		return botonEmpezar;
+	}
+	
+	public void setBotonEmpezar(JButton botonEmpezar){
+		this.botonEmpezar = botonEmpezar;
+	}
+	
+	public JButton getBotonTerminar() {
+		return botonTerminar;
+	}
+
+	public void setBotonTerminar(JButton botonTerminar) {
+		this.botonTerminar = botonTerminar;
+	}
+	
+	public JButton getBotonParar(){
+		return botonParar;
+	}
+	
+	public void setBotonParar(JButton botonParar){
+		this.botonParar = botonParar;
+	}
+	
+	public JButton getBotonElegirColor() {
+		return botonElegirColor;
+	}
+
+	public void setBotonElegirColor(JButton botonElegirColor) {
+		this.botonElegirColor = botonElegirColor;
+	}
+
+	public JLabel getEtiquetaColorActual() {
+		return etiquetaColorActual;
+	}
+
+	public void setEtiquetaColorActual(JLabel etiquetaColorActual) {
+		this.etiquetaColorActual = etiquetaColorActual;
+	}
+	
+	public JTextField getDensidadCuadricula() {
+		return densidadCuadricula;
+	}
+
+	public void setDensidadCuadricula(JTextField densidadCuadricula) {
+		this.densidadCuadricula = densidadCuadricula;
+	}
+}

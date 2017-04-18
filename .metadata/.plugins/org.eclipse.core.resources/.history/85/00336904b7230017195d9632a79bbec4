@@ -1,0 +1,9 @@
+import javax.swing.JFrame;
+
+public class Main extends JFrame{
+	static public void main(String args[]) throws InterruptedException{
+		Main main = new Main();
+		Controlador miControlador = new Controlador(new Integer(args[0]), new Integer(args[1]), new Integer(args[2]));
+		miControlador.iniciarComponentes();
+	}
+}

@@ -1,0 +1,88 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Botones extends JPanel{
+	private JButton botonEmpezar;
+	private JButton botonTerminar;
+	private JButton botonParar;
+	private JButton botonElegirColor;
+	private JLabel etiquetaFraseColor;
+	private JLabel etiquetaColorActual;
+	
+	public Botones(){
+		this.setBotonEmpezar(new JButton("Empezar"));
+		this.setBotonTerminar(new JButton("Terminar"));
+		this.setBotonParar(new JButton("Parar"));
+		this.setBotonElegirColor(new JButton("Elegir color"));
+		this.setEtiquetaFraseColor(new JLabel("Color actual: "));
+		pintarColorActual(getGraphics());
+	}
+	
+	public void iniciarComponentes(){
+		add(this.getBotonEmpezar());
+		add(this.getBotonTerminar());
+		add(this.getBotonParar());
+		add(this.getBotonElegirColor());
+		add(this.getEtiquetaFraseColor());
+		add(this.getEtiquetaColorActual());
+	}
+	
+	void pintarColorActual(Graphics g){
+		//Graphics2D g2d = (Graphics2D) g;
+		//g.drawLine(0, 0, 50, 50);
+	}
+	
+	public JButton getBotonEmpezar(){
+		return botonEmpezar;
+	}
+	
+	public void setBotonEmpezar(JButton botonEmpezar){
+		this.botonEmpezar = botonEmpezar;
+	}
+	
+	public JButton getBotonTerminar() {
+		return botonTerminar;
+	}
+
+	public void setBotonTerminar(JButton botonTerminar) {
+		this.botonTerminar = botonTerminar;
+	}
+	
+	public JButton getBotonParar(){
+		return botonParar;
+	}
+	
+	public void setBotonParar(JButton botonParar){
+		this.botonParar = botonParar;
+	}
+	
+	public JButton getBotonElegirColor() {
+		return botonElegirColor;
+	}
+
+	public void setBotonElegirColor(JButton botonElegirColor) {
+		this.botonElegirColor = botonElegirColor;
+	}
+	
+	public JLabel getEtiquetaFraseColor() {
+		return etiquetaFraseColor;
+	}
+
+	public void setEtiquetaFraseColor(JLabel etiquetaFraseColor) {
+		this.etiquetaFraseColor = etiquetaFraseColor;
+	}
+
+	public JLabel getEtiquetaColorActual() {
+		return etiquetaColorActual;
+	}
+
+	public void setEtiquetaColorActual(JLabel etiquetaColorActual) {
+		this.etiquetaColorActual = etiquetaColorActual;
+	}
+
+}
